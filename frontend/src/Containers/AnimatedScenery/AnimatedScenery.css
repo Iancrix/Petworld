@@ -1,0 +1,179 @@
+/* Animation Layout */
+
+/* Dog */
+
+.dog {
+	position: relative;
+	height: 3.3em;
+	width: 3.3em;
+
+	margin: 0;
+	left: 20vw;
+
+	background-image: url("/dog/Idle/Idle_0.png");
+	background-size: contain;
+	background-position: top;
+	background-repeat: no-repeat;
+
+	animation: runAnimation 0.5s linear infinite;
+}
+
+@keyframes runAnimation {
+	0% {
+		background-image: url(/dog/Run/Run_0.png);
+	}
+	25% {
+		background-image: url(/dog/Run/Run_1.png);
+	}
+	50% {
+		background-image: url(/dog/Run/Run_2.png);
+	}
+	75% {
+		background-image: url(/dog/Run/Run_1.png);
+	}
+	100% {
+		background-image: url(/dog/Run/Run_0.png);
+	}
+}
+
+/* Car */
+
+.car {
+	position: relative;
+	height: 5em;
+	width: 15em;
+
+	margin: 0;
+	/*left: 50vw;*/
+	margin-left: 45vw;
+
+	background-image: url("/Car/Car2.gif");
+	background-size: contain;
+	background-position: top;
+	background-repeat: no-repeat;
+}
+
+/* World Layout */
+.sky {
+	height: 10em;
+	width: 100%;
+	background-image: url("/images/Sky_Smaller.png"),
+		url("/images/Sky_Filler.png");
+	background-repeat: repeat-x, repeat;
+	background-size: contain;
+	/*border: 1px solid black;*/
+
+	animation: sky-animation 30s linear infinite;
+}
+
+@keyframes sky-animation {
+	from {
+		background-position-x: 100%;
+	}
+	to {
+		background-position-x: -9.3%;
+	}
+}
+
+.forest {
+	height: 10em;
+	width: 100%;
+	background-image: url("/images/Trees_Smaller.png"),
+		url("/images/Forest_Filler.png");
+	background-repeat: repeat-x, repeat;
+	background-size: contain;
+	/*border: 1px solid black;*/
+
+	animation: forest-animation 5s linear infinite;
+}
+
+@keyframes forest-animation {
+	from {
+		background-position-x: 100%;
+	}
+	to {
+		background-position-x: -8%;
+	}
+}
+
+.path {
+	height: 5em;
+	width: 100%;
+	background-image: url("/images/Path_Smaller.png"),
+		url("/images/Forest_Filler.png");
+	background-repeat: repeat-x, repeat;
+	background-size: contain;
+	/*border: 1px solid black;*/
+}
+
+.urban-path {
+	height: 5em;
+	width: 100%;
+	background-image: url("/images/Final_Urban_Path.png"),
+		url("/images/Street_Filler.png");
+	background-repeat: repeat-x, repeat;
+	background-size: contain;
+	/*border: 1px solid black;*/
+
+	animation: urban-animation-1 8s linear infinite;
+}
+
+@keyframes urban-animation-1 {
+	from {
+		background-position-x: 100%;
+	}
+	to {
+		background-position-x: -18%;
+	}
+}
+
+.street {
+	height: 10em;
+	width: 100%;
+	background-image: url("/images/Street_Final_5.png"),
+		url("/images/Street_Filler.png");
+	background-repeat: repeat-x, repeat;
+	background-size: contain;
+	/*border: 1px solid black;*/
+
+	padding-bottom: 7vw;
+	animation: street-animation 5s linear infinite;
+}
+
+@media (min-width: 625px) {
+	.street {
+		background-image: url("/images/Street_Final_2.png"),
+			url("/images/Street_Filler.png");
+		padding-bottom: 0;
+	}
+}
+
+@keyframes street-animation {
+	from {
+		background-position-x: 100%;
+	}
+	to {
+		background-position-x: -4%;
+	}
+}
+
+.urban-path-2 {
+	height: 10em;
+	width: 100%;
+	background-image: url("/images/Urban_Path_Part_2.png"),
+		url("/images/Forest_Filler.png");
+	background-repeat: repeat-x, repeat;
+	background-size: contain;
+	/*border: 1px solid black;*/
+
+	animation: urban-animation-2 8s linear infinite;
+}
+
+@keyframes urban-animation-2 {
+	from {
+		background-position-x: 100%;
+	}
+	to {
+		background-position-x: 2%;
+	}
+}
