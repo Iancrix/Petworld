@@ -68,11 +68,11 @@ class ElementGrid extends Component {
 										<div className="card-body-inner">
 											<i className="card-icon"></i>
 											<span className="card-name">Rex</span>
-											<ul className="ls">
-												<li>
-													<ul className="ls point">
+											<ul className="char ls inherit">
+												<li className="inherit">
+													<ul className="ls point inherit">
 														<li className="card-item">Adult</li>
-														<li className="card-item">
+														<li className="card-item inherit">
 															<div className="bullet">&bull;</div>
 															Labrador Retriever
 														</li>
@@ -86,7 +86,7 @@ class ElementGrid extends Component {
 												industry's standard dummy text ever since the 1500s,
 												when an unknown{" "}
 											</p>
-											<a>
+											<a className="inherit">
 												<div className="card-btn">View page</div>
 											</a>
 										</div>
@@ -102,11 +102,11 @@ class ElementGrid extends Component {
 										<div className="card-body-inner">
 											<i className="card-icon"></i>
 											<span className="card-name">Rex</span>
-											<ul className="ls">
-												<li>
-													<ul className="ls point">
+											<ul className="char ls inherit">
+												<li className="inherit">
+													<ul className="ls point inherit">
 														<li className="card-item">Adult</li>
-														<li className="card-item">
+														<li className="card-item inherit">
 															<div className="bullet">&bull;</div>
 															Labrador Retriever
 														</li>
@@ -120,7 +120,7 @@ class ElementGrid extends Component {
 												industry's standard dummy text ever since the 1500s,
 												when an unknown{" "}
 											</p>
-											<a>
+											<a className="inherit">
 												<div className="card-btn">View page</div>
 											</a>
 										</div>
@@ -136,11 +136,11 @@ class ElementGrid extends Component {
 										<div className="card-body-inner">
 											<i className="card-icon"></i>
 											<span className="card-name">Rex</span>
-											<ul className="ls">
-												<li>
-													<ul className="ls point">
+											<ul className="char ls inherit">
+												<li className="inherit">
+													<ul className="ls point inherit">
 														<li className="card-item">Adult</li>
-														<li className="card-item">
+														<li className="card-item inherit">
 															<div className="bullet">&bull;</div>
 															Labrador Retriever
 														</li>
@@ -154,7 +154,7 @@ class ElementGrid extends Component {
 												industry's standard dummy text ever since the 1500s,
 												when an unknown{" "}
 											</p>
-											<a>
+											<a className="inherit">
 												<div className="card-btn">View page</div>
 											</a>
 										</div>
@@ -170,11 +170,11 @@ class ElementGrid extends Component {
 										<div className="card-body-inner">
 											<i className="card-icon"></i>
 											<span className="card-name">Rex</span>
-											<ul className="ls">
-												<li>
-													<ul className="ls point">
+											<ul className="char ls inherit">
+												<li className="inherit">
+													<ul className="ls point inherit">
 														<li className="card-item">Adult</li>
-														<li className="card-item">
+														<li className="card-item inherit">
 															<div className="bullet">&bull;</div>
 															Labrador Retriever
 														</li>
@@ -188,7 +188,7 @@ class ElementGrid extends Component {
 												industry's standard dummy text ever since the 1500s,
 												when an unknown{" "}
 											</p>
-											<a>
+											<a className="inherit">
 												<div className="card-btn">View page</div>
 											</a>
 										</div>
@@ -204,11 +204,11 @@ class ElementGrid extends Component {
 										<div className="card-body-inner">
 											<i className="card-icon"></i>
 											<span className="card-name">Rex</span>
-											<ul className="ls">
-												<li>
-													<ul className="ls point">
+											<ul className="char ls inherit">
+												<li className="inherit">
+													<ul className="ls point inherit">
 														<li className="card-item">Adult</li>
-														<li className="card-item">
+														<li className="card-item inherit">
 															<div className="bullet">&bull;</div>
 															Labrador Retriever
 														</li>
@@ -222,7 +222,7 @@ class ElementGrid extends Component {
 												industry's standard dummy text ever since the 1500s,
 												when an unknown{" "}
 											</p>
-											<a>
+											<a className="inherit">
 												<div className="card-btn">View page</div>
 											</a>
 										</div>
@@ -238,11 +238,11 @@ class ElementGrid extends Component {
 										<div className="card-body-inner">
 											<i className="card-icon"></i>
 											<span className="card-name">Rex</span>
-											<ul className="ls">
-												<li>
-													<ul className="ls point">
+											<ul className="char ls inherit">
+												<li className="inherit">
+													<ul className="ls point inherit">
 														<li className="card-item">Adult</li>
-														<li className="card-item">
+														<li className="card-item inherit">
 															<div className="bullet">&bull;</div>
 															Labrador Retriever
 														</li>
@@ -256,7 +256,7 @@ class ElementGrid extends Component {
 												industry's standard dummy text ever since the 1500s,
 												when an unknown{" "}
 											</p>
-											<a>
+											<a className="inherit">
 												<div className="card-btn">View page</div>
 											</a>
 										</div>

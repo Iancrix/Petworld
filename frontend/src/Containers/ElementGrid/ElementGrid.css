@@ -217,7 +217,7 @@
 }
 
 .pd-sm {
-	padding-right: 25px;
+	padding-left: 25px;
 
 	margin-bottom: 20px;
 }
@@ -249,6 +249,8 @@
 	z-index: 5;
 
 	transition: top 1s;
+
+	font-size: inherit;
 }
 
 .card-body-inner {
@@ -258,6 +260,12 @@
 	height: 100%;
 
 	align-items: center;
+
+	font-size: inherit;
+}
+
+.inherit {
+	font-size: inherit;
 }
 
 .card-icon {
@@ -267,7 +275,7 @@
 	width: 2.5em;
 
 	background-image: url("/icons/Dropdown_Icon_Upsidedown.png");
-	background-size: cover;
+	background-size: contain;
 	background-position: top;
 	background-repeat: no-repeat;
 	z-index: 6;
@@ -280,7 +288,8 @@
 
 .card-name {
 	font-family: BreeSerif;
-	font-size: 2rem;
+	/*font-size: 2rem;*/
+	font-size: 2em;
 	color: white;
 
 	margin-top: 0em;
@@ -288,7 +297,8 @@
 
 .card-country {
 	font-family: BreeSerif;
-	font-size: 1rem;
+	/*font-size: 1rem;*/
+	font-size: 1em;
 	color: white;
 
 	margin-top: 0.3em;
@@ -296,6 +306,8 @@
 
 .card-item {
 	display: inline-block;
+	/*font-size: 1rem;*/
+	font-size: 1em;
 }
 
 .bullet {
@@ -305,7 +317,8 @@
 
 .card-p {
 	font-family: BreeSerif;
-	font-size: 0.9rem;
+	/*font-size: 0.9rem;*/
+	font-size: 0.9em;
 	color: white;
 
 	text-align: center;
@@ -318,7 +331,8 @@
 
 	color: white;
 	font-family: BreeSerif;
-	font-size: 0.9rem;
+	/*font-size: 0.9rem;*/
+	font-size: 0.9em;
 
 	margin-top: 0.6em;
 	padding: 0.6em 1.5em;
@@ -329,7 +343,35 @@
 		4px 4px 0px #00a6ff, 5px 5px 0px #00a6ff, 6px 6px 0px #00a6ff;
 }
 
-@media (min-width: 1125px) {
+@media (min-width: 600px) {
+	.card {
+		font-size: 1.45rem;
+	}
+}
+
+@media (min-width: 850px) {
+	.card {
+		font-size: 1.25rem;
+	}
+}
+
+@media (min-width: 925px) {
+	.card {
+		font-size: 1rem;
+	}
+}
+
+@media (min-width: 1050px) {
+	.card {
+		font-size: 0.8rem;
+	}
+
+	.char {
+		margin-top: -0.5em;
+	}
+}
+
+@media (min-width: 1045px) {
 	.search-container {
 		display: flex;
 	}
@@ -342,5 +384,26 @@
 	}
 	.grid {
 		justify-content: flex-start;
+	}
+}
+
+@media (min-width: 1200px) {
+	.card {
+		font-size: 0.9rem;
+	}
+	.char {
+		margin-top: 0.01em;
+	}
+}
+
+@media (min-width: 1300px) {
+	.card {
+		width: 14.5em;
+		height: 21em;
+
+		font-size: 1rem;
+	}
+	.char {
+		margin-top: 0.1em;
 	}
 }

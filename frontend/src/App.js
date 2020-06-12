@@ -17,7 +17,6 @@ class App extends Component {
 					render={props => (
 						<React.Fragment>
 							<Navbar />
-							<AnimatedScenery />
 						</React.Fragment>
 					)}
 				/>
@@ -26,6 +25,7 @@ class App extends Component {
 					path="/pets"
 					render={props => (
 						<React.Fragment>
+							<Navbar />
 							<ElementGrid />
 						</React.Fragment>
 					)}

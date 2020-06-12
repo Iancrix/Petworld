@@ -11,14 +11,15 @@ class Navcategory extends Component {
 	};
 
 	render() {
-		console.log(this.props.image);
 		return (
-			<Link to={"/" + this.props.path} className="nav-link mr-sm">
-				<li className={"nav-category " + this.props.addOnStyle}>
-					<div className="nav-category-img" style={this.getImage()}></div>
-					<span className="nav-category-name">{this.props.name}</span>
-				</li>
-			</Link>
+			<div className="category mr-sm">
+				<Link to={"/"} className="cat-link">
+					<li className={"nav-category " + this.props.addOnStyle}>
+						<div className="nav-category-img" style={this.getImage()}></div>
+						<span className="nav-category-name">{this.props.name}</span>
+					</li>
+				</Link>
+			</div>
 		);
 	}
 }

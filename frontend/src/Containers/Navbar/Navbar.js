@@ -10,8 +10,6 @@ class Navbar extends Component {
 		height: 0,
 		addOnClasses: "",
 		hoveredNavitem: "",
-		isHoveredSM: false,
-		showSidemenu: false,
 		isMobileResponsive: false,
 		showMobileMenu: false,
 	};
@@ -29,58 +27,14 @@ class Navbar extends Component {
 		this.setState({ width: window.innerWidth, height: window.innerHeight });
 	};
 
-	handleOver = event => {
-		event.stopPropagation();
-
-		this.setState({
-			isHoveredSM: true,
-			showSidemenu: true,
-		});
-	};
-
-	handleExit = event => {
-		event.stopPropagation();
-
-		this.setState({
-			isHoveredSM: false,
-			showSidemenu: false,
-		});
-	};
-
-	changeStyleSM = async (hoveredNavitem, isHoveredNI, addOnClasses) => {
-		await this.setState(prevState => ({
-			showSidemenu: isHoveredNI || prevState.isHoveredSM,
-			addOnClasses,
-			hoveredNavitem,
-		}));
-
-		if (!this.state.showSidemenu) {
-			this.setState({
-				hoveredNavitem: "",
-			});
-		}
-	};
-
-	showSidemenu = () => {
-		return this.state.showSidemenu
-			? {
-					display: "flex",
-			  }
-			: {
-					display: "none",
-			  };
-	};
-
 	componentDidUpdate() {
 		if (this.state.width <= 1045 && !this.state.isMobileResponsive) {
 			this.setState({
-				showSidemenu: false,
 				isMobileResponsive: true,
 				showMobileMenu: false,
 			});
 		} else if (this.state.width > 1045 && this.state.isMobileResponsive) {
 			this.setState({
-				showSidemenu: false,
 				isMobileResponsive: false,
 				showMobileMenu: true,
 			});
@@ -96,13 +50,19 @@ class Navbar extends Component {
 	getResponsiveStyle = () => {
 		if (this.state.isMobileResponsive) {
 			return this.state.showMobileMenu
-				? { display: "block" }
-				: { display: "none" };
+				? {
+						display: "block",
+						animation: "slide-out 0.5s forwards",
+				  }
+				: { display: "none", animation: "slide-in 0.5s forwards" };
 		} else {
-			return { display: "flex", flexDirection: "row", height: "100%" };
+			return {
+				/* display: "flex", flexDirection: "row", height: "100%" */
+			};
 		}
 	};
 
+	/*
 	getSidemenuCategories = () => {
 		switch (this.state.hoveredNavitem) {
 			case "pets":
@@ -173,7 +133,7 @@ class Navbar extends Component {
 				return <React.Fragment></React.Fragment>;
 		}
 	};
-
+*/
 	render() {
 		return (
 			<nav>
@@ -182,60 +142,67 @@ class Navbar extends Component {
 					<span className="logo-name">petworld</span>
 
 					<div className="nav-left-container">
-						<div className="toggle-nav-items" onClick={this.onToggle}>
-							<i className="toggle-icon"></i>
+						<div className="toggle-nav-list">
+							<div className="toggle-nav-items" onClick={this.onToggle}>
+								<i className="toggle-icon"></i>
+							</div>
 						</div>
-
-						<ul
+						<div
 							className={
 								this.state.isMobileResponsive
-									? "nav-left-list ls dropdown-menu"
-									: "nav-left-list ls"
+									? "dropdown-menu"
+									: "no-dropdown-menu"
 							}
 							style={this.getResponsiveStyle()}
 						>
-							<Navitem
-								path="pets"
-								name="pets"
-								content="PETS"
-								color="red"
-								hasSidemenu={true}
-								setStyleSidemenu={this.changeStyleSM}
-							/>
-							<Navitem
-								path="products"
-								name="products"
-								content="PRODUCTS"
-								color="blue"
-								hasSidemenu={true}
-								setStyleSidemenu={this.changeStyleSM}
-							/>
-							<Navitem
-								path="about"
-								name="about"
-								content="ABOUT"
-								color="brown"
-								hasSidemenu={false}
-								setStyleSidemenu={this.changeStyleSM}
-							/>
-						</ul>
+							<ul
+								className={
+									this.state.isMobileResponsive
+										? "nav-left-list ls"
+										: "nav-left-list ls"
+								}
+							>
+								<div className="left-nav">
+									<Navitem
+										path="pets"
+										name="pets"
+										content="PETS"
+										color="red"
+										hasSidemenu={true}
+										setStyleSidemenu={this.changeStyleSM}
+										isMobileResponsive={this.state.isMobileResponsive}
+									/>
+									<Navitem
+										path="products"
+										name="products"
+										content="PRODUCTS"
+										color="blue"
+										hasSidemenu={true}
+										setStyleSidemenu={this.changeStyleSM}
+										isMobileResponsive={this.state.isMobileResponsive}
+									/>
+									<Navitem
+										path="about"
+										name="about"
+										content="ABOUT"
+										color="brown"
+										hasSidemenu={false}
+										setStyleSidemenu={this.changeStyleSM}
+										isMobileResponsive={this.state.isMobileResponsive}
+									/>
+								</div>
+								<div className="right-nav">
+									<a className="sign-link" href="/">
+										<li className="nav-item beige beige-h sign-item">
+											SIGN IN
+										</li>
+									</a>
+								</div>
+							</ul>
+						</div>
 
-						<ul
-							className={"dropdown-sidemenu ls " + this.state.addOnClasses}
-							style={this.showSidemenu()}
-							id="scrollable"
-							onMouseEnter={this.handleOver}
-							onMouseLeave={this.handleExit}
-						>
-							{this.getSidemenuCategories()}
-						</ul>
+						{console.log("aqui va sidemenu")}
 					</div>
-
-					<ul className="nav-right-list ls">
-						<a className="nav-link" href="/">
-							<li className="sign-item beige beige-h">SIGN IN</li>
-						</a>
-					</ul>
 				</div>
 			</nav>
 		);
