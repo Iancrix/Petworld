@@ -1,0 +1,43 @@
+@font-face {
+	font-family: BreeSerif;
+	src: url(/fonts/BreeSerif-Regular.ttf);
+}
+
+.filter-dropdown-item {
+	box-sizing: border-box;
+	border-bottom: 5px solid #ef5866;
+	border-left: 5px solid #ef5866;
+	border-right: 5px solid #ef5866;
+	background: #2daaff;
+}
+
+.filter-dropdown-inner {
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: justify;
+	justify-content: space-between;
+	padding: 15px 20px;
+}
+
+.filter-dropdown-item-title {
+	font-size: 0.9rem;
+	color: black;
+}
+
+.right {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.item-count {
+	margin-right: 14px;
+	color: black;
+}
+
+.checkbox-dropdown {
+	width: 1.2em;
+	height: 1.2em;
+}

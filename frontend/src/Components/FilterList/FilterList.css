@@ -1,0 +1,64 @@
+@font-face {
+	font-family: BreeSerif;
+	src: url(/fonts/BreeSerif-Regular.ttf);
+}
+.filter-container {
+	width: 100%;
+	border: 1px solid #2daaff;
+	flex: 1 0 auto;
+	margin-bottom: 2em;
+}
+.filter-toggle {
+	display: flex;
+	height: 3.5em;
+	background: #ef5866;
+	/*border-radius: 7px 7px 0px 0px;*/
+	border-radius: 7px;
+
+	align-items: center;
+	justify-content: space-between;
+}
+.filter-toggle-title {
+	display: flex;
+	height: 100%;
+
+	align-items: center;
+	padding-left: 1em;
+
+	font-family: BreeSerif;
+	color: white;
+}
+.filter-icon {
+	width: 2em;
+	height: 1.8em;
+	background-image: url("/icons/Filter_Icon_2.png");
+	background-size: cover;
+	background-position: top;
+	background-repeat: no-repeat;
+
+	margin-right: 0.5em;
+}
+.dropdown-icon {
+	width: 2.2em;
+	height: 1.5em;
+	background-image: url("/icons/Dropdown_icon.png");
+	background-size: cover;
+	background-position: top;
+	background-repeat: no-repeat;
+
+	margin-right: 1em;
+}
+
+.filter-list {
+	/*background: lightblue;*/
+
+	/*border: 1px solid black;*/
+}
+
+@media (min-width: 1045px) {
+	.filter-container {
+		width: 20%;
+		margin-right: 1em;
+		margin-bottom: 0em;
+	}
+}

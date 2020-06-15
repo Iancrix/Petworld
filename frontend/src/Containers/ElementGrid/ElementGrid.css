@@ -9,6 +9,12 @@
 	font-size: 1.2rem;
 }
 
+.container-full {
+	background: #fcf4fc;
+	border-top: 7px solid #ef5866;
+	padding-top: 1.5em;
+}
+
 .search-container {
 	display: block;
 	max-width: 1700px;
@@ -18,14 +24,16 @@
 
 .filter-container {
 	width: 100%;
-	border: 1px solid red;
+	border: 1px solid #2daaff;
 	flex: 1 0 auto;
+	margin-bottom: 2em;
 }
 
 .filter-toggle {
 	display: flex;
 	height: 3.5em;
-	background: #2daaff;
+	background: #ef5866;
+	/*border-radius: 7px 7px 0px 0px;*/
 	border-radius: 7px;
 
 	align-items: center;
@@ -69,20 +77,24 @@
 }
 
 .filter-list {
-	background: lightblue;
+	/*background: lightblue;*/
+
+	/*border: 1px solid black;*/
 }
 
 .filter-list-item {
-	border: 1px solid yellow;
-	padding: 1.2em 0em;
+	padding-top: 0.7em;
+	padding-bottom: 1.2em;
+
+	background: #2daaff;
+	border-bottom: 5px solid #ef5866;
 }
 
 .filter-item-title {
-	border: 1px solid blue;
 	font-size: 1.1rem;
-	color: black;
+	color: white;
 	text-align: center;
-	margin-bottom: 0.5em;
+	margin-bottom: 0.3em;
 }
 
 .filter-item-btn {
@@ -105,7 +117,6 @@
 
 .filter-btn-text {
 	font-family: BreeSerif;
-	border: 1px solid blue;
 }
 
 .relative {
@@ -114,7 +125,7 @@
 }
 
 .filter-dropdown-list {
-	display: block;
+	display: block; /*block*/
 	position: absolute;
 
 	top: 100%;
@@ -122,11 +133,12 @@
 	width: 100%;
 
 	max-height: 300px;
-	padding: 10px 0;
+	padding-top: 5px;
+	/*padding: 5px 0;*/
 
 	overflow: auto;
 	z-index: 3;
-	background-color: gray;
+	background-color: #ef5866;
 
 	border-radius: 0 0 5px 5px;
 	/*transform-origin: center top;*/
@@ -147,7 +159,11 @@
 
 .filter-dropdown-item {
 	box-sizing: border-box;
-	border: 1px solid black;
+	/*border: 3px solid #ef5866;*/
+	border-bottom: 5px solid #ef5866;
+	border-left: 5px solid #ef5866;
+	border-right: 5px solid #ef5866;
+	background: #2daaff;
 }
 
 .filter-dropdown-inner {
@@ -245,7 +261,7 @@
 	height: 100%;
 	width: 100%;
 
-	background: #13ce66;
+	background: #ef5866; /*#13ce66;*/
 	z-index: 5;
 
 	transition: top 1s;
@@ -347,11 +363,17 @@
 	.card {
 		font-size: 1.45rem;
 	}
+	.card-country {
+		margin-top: 0.5em; /*0.3em;*/
+	}
 }
 
 @media (min-width: 850px) {
 	.card {
 		font-size: 1.25rem;
+	}
+	.card-country {
+		margin-top: 0.3em;
 	}
 }
 
@@ -365,9 +387,11 @@
 	.card {
 		font-size: 0.8rem;
 	}
-
+	.card-name {
+		margin-top: -0.2em;
+	}
 	.char {
-		margin-top: -0.5em;
+		margin-top: -0.45em;
 	}
 }
 
@@ -378,6 +402,7 @@
 	.filter-container {
 		width: 20%;
 		margin-right: 1em;
+		margin-bottom: 0em;
 	}
 	.results-container {
 		width: 75%;

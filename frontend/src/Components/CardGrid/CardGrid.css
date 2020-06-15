@@ -1,0 +1,24 @@
+@font-face {
+	font-family: BreeSerif;
+	src: url(/fonts/BreeSerif-Regular.ttf);
+}
+
+.results-container {
+	border: 1px solid blue;
+}
+
+.grid {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	justify-content: space-around;
+}
+
+@media (min-width: 1045px) {
+	.results-container {
+		width: 75%;
+	}
+	.grid {
+		justify-content: flex-start;
+	}
+}

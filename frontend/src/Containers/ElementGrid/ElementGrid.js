@@ -4,7 +4,7 @@ import "./ElementGrid.css";
 class ElementGrid extends Component {
 	render() {
 		return (
-			<div>
+			<div className="container-full">
 				<div className="search-container">
 					<div className="filter-container">
 						<div className="filter-toggle">
@@ -16,6 +16,47 @@ class ElementGrid extends Component {
 						</div>
 
 						<ul className="filter-list">
+							<li className="filter-list-item ls">
+								<div className="relative">
+									<div>
+										<div className="filter-item-title">BREED</div>
+										<button className="filter-item-btn">
+											<div className="filter-btn-text">Any</div>
+											<i className="dropdown-icon-smooth"></i>
+										</button>
+									</div>
+									<div>
+										<ul className="filter-dropdown-list ls">
+											<li className="filter-dropdown-item">
+												<div className="filter-dropdown-inner">
+													<div className="filter-dropdown-item-title">hola</div>
+													<div className="right">
+														<div className="item-count">(55)</div>
+														<input
+															className="checkbox-dropdown"
+															type="checkbox"
+														></input>
+													</div>
+												</div>
+											</li>
+
+											<li className="filter-dropdown-item">
+												<div className="filter-dropdown-inner">
+													<div className="filter-dropdown-item-title">hola</div>
+													<div className="right">
+														<div className="item-count">(55)</div>
+														<input
+															className="checkbox-dropdown"
+															type="checkbox"
+														></input>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+
 							<li className="filter-list-item ls">
 								<div className="relative">
 									<div>

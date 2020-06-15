@@ -1,0 +1,22 @@
+@font-face {
+	font-family: BreeSerif;
+	src: url(/fonts/BreeSerif-Regular.ttf);
+}
+.container-full {
+	background: #fcf4fc;
+	border-top: 7px solid #ef5866;
+	padding-top: 1.5em;
+}
+
+.search-container {
+	display: block;
+	max-width: 1700px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+@media (min-width: 1045px) {
+	.search-container {
+		display: flex;
+	}
+}

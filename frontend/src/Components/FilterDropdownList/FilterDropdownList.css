@@ -1,0 +1,31 @@
+@font-face {
+	font-family: BreeSerif;
+	src: url(/fonts/BreeSerif-Regular.ttf);
+}
+.ls {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.filter-dropdown-list {
+	display: none; /*block*/
+	position: absolute;
+
+	top: 100%;
+	left: 0;
+	width: 100%;
+
+	max-height: 300px;
+
+	padding-top: 5px !important;
+	overflow: auto;
+	z-index: 3;
+	background-color: #ef5866;
+
+	border-radius: 0 0 5px 5px;
+	box-sizing: border-box;
+
+	border: 1px solid black;
+	/*border-top: 5px solid #ef5866;*/
+}

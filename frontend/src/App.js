@@ -5,7 +5,7 @@ import { Route } from "react-router-dom";
 
 import Navbar from "./Containers/Navbar/Navbar";
 import AnimatedScenery from "./Containers/AnimatedScenery/AnimatedScenery";
-import ElementGrid from "./Containers/ElementGrid/ElementGrid";
+import PetSection from "./Containers/PetSection/PetSection";
 
 class App extends Component {
 	render() {
@@ -17,6 +17,7 @@ class App extends Component {
 					render={props => (
 						<React.Fragment>
 							<Navbar />
+							<AnimatedScenery />
 						</React.Fragment>
 					)}
 				/>
@@ -26,7 +27,7 @@ class App extends Component {
 					render={props => (
 						<React.Fragment>
 							<Navbar />
-							<ElementGrid />
+							<PetSection />
 						</React.Fragment>
 					)}
 				/>
