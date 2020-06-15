@@ -9,6 +9,14 @@
 	border-left: 5px solid #ef5866;
 	border-right: 5px solid #ef5866;
 	background: #2daaff;
+
+	cursor: pointer;
+	color: black;
+}
+
+.filter-dropdown-item:hover {
+	background: #ef5866;
+	color: white;
 }
 
 .filter-dropdown-inner {
@@ -22,7 +30,6 @@
 
 .filter-dropdown-item-title {
 	font-size: 0.9rem;
-	color: black;
 }
 
 .right {

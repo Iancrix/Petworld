@@ -10,13 +10,13 @@
 
 .filter-dropdown-list {
 	display: none; /*block*/
-	position: absolute;
+	/*position: absolute;*/
 
 	top: 100%;
 	left: 0;
 	width: 100%;
 
-	max-height: 300px;
+	max-height: 315px;
 
 	padding-top: 5px !important;
 	overflow: auto;

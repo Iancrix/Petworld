@@ -3,8 +3,10 @@ import FilterDropdownItem from "../FilterDropdownItem/FilterDropdownItem";
 import "./FilterDropdownList.css";
 
 class FilterDropdownList extends Component {
+	state = { showDropdown: this.props.showDropdownList };
+
 	showList = () => {
-		return this.props.showDropdownList
+		return this.state.showDropdown
 			? {
 					display: "block",
 			  }
@@ -12,6 +14,14 @@ class FilterDropdownList extends Component {
 					display: "none",
 			  };
 	};
+
+	componentDidUpdate() {
+		if (this.state.showDropdown != this.props.showDropdownList) {
+			this.setState({
+				showDropdown: this.props.showDropdownList,
+			});
+		}
+	}
 
 	render() {
 		return (

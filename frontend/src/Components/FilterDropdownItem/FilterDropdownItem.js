@@ -7,23 +7,46 @@ class FilterDropdownItem extends Component {
 		checked: this.props.item.isChecked,
 	};
 
-	handleCheckbox = async () => {
-		await this.setState({ checked: !this.state.checked });
-
-		this.props.setCheckboxItem(
-			this.props.category,
-			this.props.item.name,
-			this.state.checked
-		);
+	handleCheckbox = () => {
+		this.setState({
+			checked: this.props.setCheckboxItem(
+				this.props.category,
+				this.props.item.name,
+				!this.state.checked
+			),
+		});
 	};
 
 	onClick = () => {
-		console.log("clickeo");
+		this.setState({
+			checked: this.props.setCheckboxItem(
+				this.props.category,
+				this.props.item.name,
+				!this.state.checked
+			),
+		});
+	};
+
+	getStyle = () => {
+		return this.state.checked
+			? {
+					background: "#ef5866",
+					color: "white",
+					borderBottom: "5px solid white",
+			  }
+			: {
+					background: "#2daaff",
+					color: "black",
+			  };
 	};
 
 	render() {
 		return (
-			<li className="filter-dropdown-item" onClick={this.onClick}>
+			<li
+				className="filter-dropdown-item"
+				onClick={this.onClick}
+				style={this.getStyle()}
+			>
 				<div className="filter-dropdown-inner">
 					<div className="filter-dropdown-item-title">
 						{this.props.item.name}

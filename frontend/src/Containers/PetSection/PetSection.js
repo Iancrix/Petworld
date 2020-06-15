@@ -16,6 +16,7 @@ class PetSection extends Component {
 					{ name: "Poodle", count: "14", isChecked: false },
 					{ name: "Beagle", count: "28", isChecked: false },
 				],
+				showDropdownList: false,
 			},
 			{
 				category: "Genero",
@@ -23,6 +24,7 @@ class PetSection extends Component {
 					{ name: "Masculino", count: "113", isChecked: false },
 					{ name: "Femenino", count: "91", isChecked: false },
 				],
+				showDropdownList: false,
 			},
 			{
 				category: "Edad",
@@ -31,6 +33,7 @@ class PetSection extends Component {
 					{ name: "Adult", count: "34", isChecked: false },
 					{ name: "Senior", count: "41", isChecked: false },
 				],
+				showDropdownList: false,
 			},
 		],
 	};
@@ -42,6 +45,7 @@ class PetSection extends Component {
 					for (var i in filterCategory.items) {
 						if (filterCategory.items[i].name === name) {
 							filterCategory.items[i].isChecked = isChecked;
+							break;
 						}
 					}
 				}
@@ -49,6 +53,24 @@ class PetSection extends Component {
 			}
 		);
 		this.setState({ filterCategories: nextFilterCategories });
+		return isChecked;
+	};
+
+	setDropdownList = (category, showDropdown) => {
+		const nextFilterCategories = this.state.filterCategories.map(
+			filterCategory => {
+				if (filterCategory.category === category) {
+					filterCategory.showDropdownList = showDropdown;
+				} else {
+					if (showDropdown) {
+						filterCategory.showDropdownList = false;
+					}
+				}
+				return filterCategory;
+			}
+		);
+		this.setState({ filterCategories: nextFilterCategories });
+		return showDropdown;
 	};
 
 	render() {
@@ -58,6 +80,7 @@ class PetSection extends Component {
 					<FilterList
 						filterCategories={this.state.filterCategories}
 						setCheckboxItem={this.setCheckboxItem}
+						setDropdownList={this.setDropdownList}
 					/>
 					<CardGrid />
 				</div>

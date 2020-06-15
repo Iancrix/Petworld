@@ -4,13 +4,25 @@ import "./FilterItem.css";
 
 class FilterItem extends Component {
 	state = {
-		showDropdownList: false,
+		showDropdownList: this.props.filterItem.showDropdownList,
 	};
+
 	onClick = event => {
-		this.setState(prevState => ({
-			showDropdownList: !prevState.showDropdownList,
-		}));
+		this.setState({
+			showDropdownList: this.props.setDropdownList(
+				this.props.filterItem.category,
+				!this.state.showDropdownList
+			),
+		});
 	};
+
+	componentDidUpdate() {
+		if (this.state.showDropdownList != this.props.filterItem.showDropdownList) {
+			this.setState({
+				showDropdownList: this.props.filterItem.showDropdownList,
+			});
+		}
+	}
 
 	render() {
 		return (

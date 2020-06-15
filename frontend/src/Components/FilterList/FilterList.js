@@ -21,6 +21,7 @@ class FilterList extends Component {
 						<FilterItem
 							filterItem={filterItem}
 							setCheckboxItem={this.props.setCheckboxItem}
+							setDropdownList={this.props.setDropdownList}
 						/>
 					))}
 				</ul>
