@@ -8,12 +8,9 @@ class CardGrid extends Component {
 		return (
 			<div className="results-container">
 				<div className="grid">
-					<CardItem />
-					<CardItem />
-					<CardItem />
-					<CardItem />
-					<CardItem />
-					<CardItem />
+					{this.props.pets.map(pet => (
+						<CardItem pet={pet} />
+					))}
 				</div>
 			</div>
 		);

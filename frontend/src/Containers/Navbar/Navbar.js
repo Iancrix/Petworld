@@ -56,84 +56,10 @@ class Navbar extends Component {
 				  }
 				: { display: "none", animation: "slide-in 0.5s forwards" };
 		} else {
-			return {
-				/* display: "flex", flexDirection: "row", height: "100%" */
-			};
+			return {};
 		}
 	};
 
-	/*
-	getSidemenuCategories = () => {
-		switch (this.state.hoveredNavitem) {
-			case "pets":
-				return (
-					<React.Fragment>
-						<Navcategory
-							path="/dogs"
-							name="dogs"
-							image="/categories/pets/dogs.jpg"
-							addOnStyle="red-h"
-						/>
-
-						<Navcategory
-							path="/cats"
-							name="cats"
-							image="/categories/pets/cats.jpg"
-							addOnStyle="red-h"
-						/>
-
-						<Navcategory
-							path="/birds"
-							name="birds"
-							image="/categories/pets/birds.jpg"
-							addOnStyle="red-h"
-						/>
-
-						<Navcategory
-							path="/rodents"
-							name="rodents"
-							image="/categories/pets/rodents.jpg"
-							addOnStyle="red-h"
-						/>
-
-						<Navcategory
-							path="/rabbits"
-							name="rabbits"
-							image="/categories/pets/rabbits.jpg"
-							addOnStyle="red-h"
-						/>
-					</React.Fragment>
-				);
-			case "products":
-				return (
-					<React.Fragment>
-						<Navcategory
-							path="/nutrition"
-							name="nutrition"
-							image="/categories/products/nutrition.jpeg"
-							addOnStyle="blue-h"
-						/>
-
-						<Navcategory
-							path="/costumes"
-							name="costumes"
-							image="/categories/products/costumes.jpg"
-							addOnStyle="blue-h"
-						/>
-
-						<Navcategory
-							path="/toys"
-							name="toys"
-							image="/categories/products/toys.jpg"
-							addOnStyle="blue-h"
-						/>
-					</React.Fragment>
-				);
-			default:
-				return <React.Fragment></React.Fragment>;
-		}
-	};
-*/
 	render() {
 		return (
 			<nav>
@@ -200,8 +126,6 @@ class Navbar extends Component {
 								</div>
 							</ul>
 						</div>
-
-						{console.log("aqui va sidemenu")}
 					</div>
 				</div>
 			</nav>
