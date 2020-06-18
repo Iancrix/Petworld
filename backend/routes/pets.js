@@ -3,14 +3,42 @@ const router = express.Router();
 const Pet = require("../models/Pet");
 
 // Filter Pets by breed
-router.get("/breed", (req, res) => {
-	/*
-	Pet.find({ breed: "Labrador Retriever" }, "name", (error, docs) => {
-		if (error) throw Error("Error found");
+router.get("/filter", (req, res) => {
+	const query = {};
 
-		console.log(docs);
-    });
-    */
+	var Raza_filters = [];
+	var Genero_filters = [];
+	var Edad_filters = [];
+
+	for (let param in req.query) {
+		let strParam = param.split("_");
+
+		let category = strParam[0];
+		let index = strParam[1];
+
+		let value = req.query[param];
+
+		switch (category) {
+			case "Raza":
+				Raza_filters.push(value);
+				query["breed"] = { $in: Raza_filters };
+				break;
+			case "Genero":
+				Genero_filters.push(value);
+				query["genre"] = { $in: Genero_filters };
+				break;
+			case "Edad":
+				Edad_filters.push(value);
+				query["age"] = { $in: Edad_filters };
+				break;
+		}
+	}
+
+	Pet.find(query)
+		/*.limit(2)*/
+		/*.skip(10)*/
+		.then(data => res.status(200).json(data))
+		.catch(error => res.status(400).json({ msg: error.message }));
 });
 
 // Get All Pets
@@ -30,13 +58,14 @@ router.post("/", async (req, res) => {
 	const pet = new Pet({
 		name: req.body.name,
 		age: req.body.age,
+		genre: req.body.genre,
 		breed: req.body.breed,
 		location: req.body.location,
 		country: req.body.country,
 		description: req.body.description,
 		perks: req.body.perks,
 		image: req.body.image,
-		id_rescue: req.body.id_rescue,
+		rescue: req.body.rescue,
 	});
 
 	try {
@@ -50,15 +79,13 @@ router.post("/", async (req, res) => {
 });
 
 // Get specific Pet
-router.get("/:petId", async (req, res) => {
-	try {
-		const pet = await Pet.findById(req.params.petId);
-		if (!pet) throw Error("No pet was found with that id");
-
-		res.status(200).json(pet);
-	} catch (e) {
-		res.status(400).json({ message: e.message });
-	}
+router.get("/:petId", (req, res) => {
+	Pet.findById(req.params.petId)
+		.populate("rescue")
+		.then(data => {
+			res.status(200).json(data);
+		})
+		.catch(err => res.status(400).json({ msg: err }));
 });
 
 // Delete Pet

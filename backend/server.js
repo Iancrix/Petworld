@@ -21,6 +21,9 @@ app.use(express.json());
 const petsRoute = require("./routes/pets");
 app.use("/pets/", petsRoute);
 
+const rescuesRoute = require("./routes/rescues");
+app.use("/rescues/", rescuesRoute);
+
 // DB Connection
 mongoose
 	.connect(process.env.MONGODB_URI, {

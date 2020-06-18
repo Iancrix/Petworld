@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 
 import queryString from "query-string";
+import axios from "axios";
 
 class PetSection extends Component {
 	static propTypes = {
@@ -32,8 +33,8 @@ class PetSection extends Component {
 			{
 				category: "Genero",
 				items: [
-					{ name: "Masculino", count: "113", isChecked: false },
-					{ name: "Femenino", count: "91", isChecked: false },
+					{ name: "Male", count: "113", isChecked: false },
+					{ name: "Female", count: "91", isChecked: false },
 				],
 				showDropdownList: false,
 			},
@@ -224,12 +225,33 @@ class PetSection extends Component {
 
 	componentDidMount() {
 		this.resetQuery();
+
+		axios
+			.get("http://localhost:5000/pets")
+			.then(res => {
+				this.setState({
+					pets: res.data,
+				});
+			})
+			.catch(e => console.log(e));
 	}
 
 	componentDidUpdate(prevProps) {
 		const locationChanged = this.props.location !== prevProps.location;
 		if (locationChanged) {
 			console.log("location changed !!!");
+			console.log(this.getQueryParams());
+			console.log(this.props.history.location.search);
+			axios
+				.get(
+					`http://localhost:5000/pets/filter${this.props.history.location.search}`
+				)
+				.then(res => {
+					this.setState({
+						pets: res.data,
+					});
+				})
+				.catch(e => console.log(e));
 		}
 	}
 
@@ -269,7 +291,6 @@ class PetSection extends Component {
 	render() {
 		return (
 			<div className="container-full">
-				<h1>Hello World!!</h1>
 				<div className="search-container">
 					<FilterList
 						filterCategories={this.state.filterCategories}
