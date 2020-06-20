@@ -162,7 +162,7 @@ class PetSection extends Component {
 	};
 
 	componentDidMount() {
-		this.resetQuery();
+		/*this.resetQuery();*/
 		this.addQuery("el_sz", this.state.elementsPerPage.toString());
 		this.addQuery("page_index", this.state.currentPage.toString());
 
@@ -227,18 +227,13 @@ class PetSection extends Component {
 	};
 
 	changePage = async currentPage => {
-		//console.log(this.state.maxPages);
-		//console.log(currentPage);
 		if (currentPage > 0 && currentPage <= this.state.maxPages) {
 			await this.setState({
 				currentPage: currentPage,
 			});
 
-			/*this.deleteQuery("page_index");*/
 			this.addQuery("page_index", this.state.currentPage.toString());
 		}
-
-		//console.log(this.state.maxPages);
 	};
 
 	getQueryParams = () => {
@@ -284,6 +279,8 @@ class PetSection extends Component {
 						changePage={this.changePage}
 						currentPage={this.state.currentPage}
 						maxPages={this.state.maxPages}
+						activeFilters={this.state.activeFilters}
+						setCheckboxItem={this.setCheckboxItem}
 					/>
 				</div>
 			</div>

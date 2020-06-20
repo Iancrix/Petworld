@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./CardGrid.css";
 
 import CardItem from "../CardItem/CardItem";
+import FilterMini from "../FilterMini/FilterMini";
 
 class CardGrid extends Component {
 	state = {
@@ -10,13 +11,13 @@ class CardGrid extends Component {
 	};
 
 	componentDidUpdate() {
-		if (this.state.currentPage != this.props.currentPage) {
+		if (this.state.currentPage !== this.props.currentPage) {
 			this.setState({
 				currentPage: this.props.currentPage,
 			});
 		}
 
-		if (this.state.maxPages != this.props.maxPages) {
+		if (this.state.maxPages !== this.props.maxPages) {
 			this.setState({
 				maxPages: this.props.maxPages,
 			});
@@ -43,20 +44,30 @@ class CardGrid extends Component {
 			: {};
 	};
 
+	getActiveFilters = () => {
+		const activeFilters = [];
+		this.props.activeFilters.forEach(filterCategory => {
+			var filters = filterCategory.filters;
+			filters.map((filter, i) =>
+				activeFilters.push(
+					<FilterMini
+						key={filter + i}
+						name={filter}
+						category={filterCategory.category}
+						setCheckboxItem={this.props.setCheckboxItem}
+					/>
+				)
+			);
+		});
+
+		return activeFilters;
+	};
+
 	render() {
 		return (
 			<div className="results-container">
 				<div className="page-toggler">
-					<div className="filter-minis">
-						<div className="fil">
-							<div className="fil-pr">
-								<span className="fil-txt">Labrador Retriever</span>
-								<div className="fil-cls">
-									<i className="x-icon"></i>
-								</div>
-							</div>
-						</div>
-					</div>
+					<div className="filter-minis">{this.getActiveFilters()}</div>
 					<div className="page-indexer">
 						<button
 							className="backwards"
@@ -78,8 +89,8 @@ class CardGrid extends Component {
 					</div>
 				</div>
 				<div className="grid">
-					{this.props.pets.map(pet => (
-						<CardItem pet={pet} />
+					{this.props.pets.map((pet, i) => (
+						<CardItem key={i} pet={pet} />
 					))}
 				</div>
 			</div>

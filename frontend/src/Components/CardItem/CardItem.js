@@ -33,7 +33,7 @@ class CardItem extends Component {
 								{this.props.pet.location}, {this.props.pet.country}
 							</span>
 							<p className="card-p">{this.props.pet.description} </p>
-							<a className="inherit">
+							<a className="inherit" href="/">
 								<div className="card-btn">View page</div>
 							</a>
 						</div>

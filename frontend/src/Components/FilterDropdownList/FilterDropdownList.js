@@ -16,7 +16,7 @@ class FilterDropdownList extends Component {
 	};
 
 	componentDidUpdate() {
-		if (this.state.showDropdown != this.props.showDropdownList) {
+		if (this.state.showDropdown !== this.props.showDropdownList) {
 			this.setState({
 				showDropdown: this.props.showDropdownList,
 			});
@@ -26,11 +26,13 @@ class FilterDropdownList extends Component {
 	render() {
 		return (
 			<ul className="filter-dropdown-list ls" style={this.showList()}>
-				{this.props.itemsList.map(item => (
+				{this.props.itemsList.map((item, i) => (
 					<FilterDropdownItem
+						key={i}
 						item={item}
 						category={this.props.category}
 						setCheckboxItem={this.props.setCheckboxItem}
+						activeFilters={this.props.activeFilters}
 					/>
 				))}
 			</ul>

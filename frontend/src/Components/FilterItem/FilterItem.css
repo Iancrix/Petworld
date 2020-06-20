@@ -59,4 +59,6 @@
 	background-size: cover;
 	background-position: top;
 	background-repeat: no-repeat;
+
+	transition: transform 0.5s;
 }

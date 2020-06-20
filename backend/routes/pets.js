@@ -54,7 +54,7 @@ router.get("/filter", async (req, res) => {
 		.limit(elementSize)
 		.skip(skipElements)
 		.then(data => {
-			console.log("Max PAGES " + Math.ceil(count / elementSize));
+			//console.log("Max PAGES " + Math.ceil(count / elementSize));
 			res.status(200).json({
 				pets: data, //data.slice(0, elementSize),
 				count: count,

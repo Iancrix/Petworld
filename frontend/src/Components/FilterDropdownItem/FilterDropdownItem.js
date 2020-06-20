@@ -7,25 +7,22 @@ class FilterDropdownItem extends Component {
 		checked: this.props.item.isChecked,
 	};
 
-	handleCheckbox = () => {
-		this.setState({
-			checked: this.props.setCheckboxItem(
-				this.props.category,
-				this.props.item.name,
-				!this.state.checked
-			),
-		});
+	onClick = () => {
+		this.props.setCheckboxItem(
+			this.props.category,
+			this.props.item.name,
+			!this.state.checked
+		);
 	};
 
-	onClick = () => {
-		this.setState({
-			checked: this.props.setCheckboxItem(
-				this.props.category,
-				this.props.item.name,
-				!this.state.checked
-			),
-		});
-	};
+	componentDidUpdate() {
+		if (this.state.checked !== this.props.item.isChecked) {
+			console.log("it changed");
+			this.setState({
+				checked: this.props.item.isChecked,
+			});
+		}
+	}
 
 	getStyle = () => {
 		return this.state.checked
@@ -57,7 +54,7 @@ class FilterDropdownItem extends Component {
 							className="checkbox-dropdown"
 							type="checkbox"
 							checked={this.state.checked}
-							onChange={this.handleCheckbox}
+							readOnly
 						></input>
 					</div>
 				</div>

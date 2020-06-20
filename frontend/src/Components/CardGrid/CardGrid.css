@@ -4,6 +4,10 @@
 }
 
 .results-container {
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
 }
 
 .grid {
@@ -55,6 +59,11 @@
 	padding: 0.4em 0.4em;
 
 	border-radius: 0px 4px 0px 4px;
+
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
 }
 
 .fil-cls {
@@ -63,6 +72,10 @@
 	padding: 0.4em 0.4em;
 	background: #ef5866;
 	border-radius: 4px 0px 4px 0px;
+}
+
+.fil-cls:hover {
+	background: #ea717c;
 }
 
 .x-icon {

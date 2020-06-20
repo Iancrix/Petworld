@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./Navbar.css";
 
 import Navitem from "../../Components/Navitem/Navitem";
-import Navcategory from "../../Components/Navcategory/Navcategory";
 
 class Navbar extends Component {
 	state = {

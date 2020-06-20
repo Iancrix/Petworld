@@ -16,8 +16,20 @@ class FilterItem extends Component {
 		});
 	};
 
+	getAnim = () => {
+		return this.state.showDropdownList
+			? {
+					transform: "rotate(-180deg)",
+			  }
+			: {
+					transform: "rotate(0deg)",
+			  };
+	};
+
 	componentDidUpdate() {
-		if (this.state.showDropdownList != this.props.filterItem.showDropdownList) {
+		if (
+			this.state.showDropdownList !== this.props.filterItem.showDropdownList
+		) {
 			this.setState({
 				showDropdownList: this.props.filterItem.showDropdownList,
 			});
@@ -34,7 +46,7 @@ class FilterItem extends Component {
 						</div>
 						<button className="filter-item-btn" onClick={this.onClick}>
 							<div className="filter-btn-text">Any</div>
-							<i className="dropdown-icon-smooth"></i>
+							<i className="dropdown-icon-smooth" style={this.getAnim()}></i>
 						</button>
 					</div>
 					<div>
