@@ -20,115 +20,53 @@ class PetSection extends Component {
 	state = {
 		filterCategories: [
 			{
-				category: "Raza",
+				category: "Breed",
 				items: [
-					{ name: "Labrador Retriever", count: "57", isChecked: false },
-					{ name: "German Shepherd", count: "42", isChecked: false },
-					{ name: "Bulldog", count: "31", isChecked: false },
-					{ name: "Poodle", count: "14", isChecked: false },
-					{ name: "Beagle", count: "28", isChecked: false },
+					{ name: "Labrador Retriever", count: 0, isChecked: false },
+					{ name: "German Shepherd", count: 0, isChecked: false },
+					{ name: "Bulldog", count: 0, isChecked: false },
+					{ name: "Poodle", count: 0, isChecked: false },
+					{ name: "Beagle", count: 0, isChecked: false },
 				],
 				showDropdownList: false,
 			},
 			{
-				category: "Genero",
+				category: "Genre",
 				items: [
-					{ name: "Male", count: "113", isChecked: false },
-					{ name: "Female", count: "91", isChecked: false },
+					{ name: "Male", count: 0, isChecked: false },
+					{ name: "Female", count: 0, isChecked: false },
 				],
 				showDropdownList: false,
 			},
 			{
-				category: "Edad",
+				category: "Age",
 				items: [
-					{ name: "Young", count: "32", isChecked: false },
-					{ name: "Adult", count: "34", isChecked: false },
-					{ name: "Senior", count: "41", isChecked: false },
+					{ name: "Young", count: 0, isChecked: false },
+					{ name: "Adult", count: 0, isChecked: false },
+					{ name: "Senior", count: 0, isChecked: false },
 				],
 				showDropdownList: false,
-			},
-		],
-		pets: [
-			{
-				id: "1",
-				name: "Rex",
-				age: "Adult",
-				breed: "Labrador Retriever",
-				location: "Lousiana",
-				country: "USA",
-				description:
-					"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
-				perks: ["Amistoso", "Jugueton", "Leal"],
-				image: "/petimages/Labrador_Retriever.jpg",
-				id_rescue: "1",
-			},
-			{
-				id: "2",
-				name: "Rayo",
-				age: "Young",
-				breed: "German Shepherd",
-				location: "California",
-				country: "USA",
-				description:
-					"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
-				perks: ["Amistoso", "Jugueton", "Leal"],
-				image: "/petimages/German_Shepherd.jpg",
-				id_rescue: "2",
-			},
-			{
-				id: "3",
-				name: "Benny",
-				age: "Senior",
-				breed: "Bulldog",
-				location: "Delaware",
-				country: "USA",
-				description:
-					"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
-				perks: ["Amistoso", "Jugueton", "Leal"],
-				image: "/petimages/Bulldog.jpg",
-				id_rescue: "3",
-			},
-			{
-				id: "4",
-				name: "Alicia",
-				age: "Young",
-				breed: "Poodle",
-				location: "Washington",
-				country: "USA",
-				description:
-					"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
-				perks: ["Amistoso", "Jugueton", "Leal"],
-				image: "/petimages/Poodle.jpg",
-				id_rescue: "4",
-			},
-			{
-				id: "5",
-				name: "Tristan",
-				age: "Adult",
-				breed: "Beagle",
-				location: "New York",
-				country: "USA",
-				description:
-					"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown",
-				perks: ["Amistoso", "Jugueton", "Leal"],
-				image: "/petimages/Beagle.jpg",
-				id_rescue: "5",
 			},
 		],
 		activeFilters: [
 			{
-				category: "Raza",
+				category: "Breed",
 				filters: [],
 			},
 			{
-				category: "Genero",
+				category: "Genre",
 				filters: [],
 			},
 			{
-				category: "Edad",
+				category: "Age",
 				filters: [],
 			},
 		],
+		pets: [],
+		currentPage: 1,
+		elementsPerPage: 8,
+		maxPages: 1,
+		totalElements: 0,
 	};
 
 	setCheckboxItem = (category, name, isChecked) => {
@@ -225,12 +163,34 @@ class PetSection extends Component {
 
 	componentDidMount() {
 		this.resetQuery();
+		this.addQuery("el_sz", this.state.elementsPerPage.toString());
+		this.addQuery("page_index", this.state.currentPage.toString());
 
 		axios
-			.get("http://localhost:5000/pets")
+			.get(`http://localhost:5000/pets/count`)
 			.then(res => {
 				this.setState({
-					pets: res.data,
+					filterCategories: this.state.filterCategories.map(filterCategory => {
+						if (
+							Object.keys(res.data).includes(
+								filterCategory.category.toLowerCase()
+							)
+						) {
+							var categoryGroup =
+								res.data[filterCategory.category.toLowerCase()];
+
+							var filterGroup = filterCategory.items;
+							for (var i in categoryGroup) {
+								for (var j in filterGroup) {
+									if (categoryGroup[i]._id === filterGroup[j].name) {
+										filterGroup[j].count = categoryGroup[i].count;
+									}
+								}
+							}
+						}
+
+						return filterCategory;
+					}),
 				});
 			})
 			.catch(e => console.log(e));
@@ -239,17 +199,24 @@ class PetSection extends Component {
 	componentDidUpdate(prevProps) {
 		const locationChanged = this.props.location !== prevProps.location;
 		if (locationChanged) {
-			console.log("location changed !!!");
-			console.log(this.getQueryParams());
-			console.log(this.props.history.location.search);
+			//console.log("location changed !!!");
 			axios
 				.get(
 					`http://localhost:5000/pets/filter${this.props.history.location.search}`
 				)
 				.then(res => {
 					this.setState({
-						pets: res.data,
+						pets: res.data.pets,
+						totalElements: res.data.count,
+						maxPages: res.data.maxPages,
 					});
+
+					if (
+						res.data.count <=
+						(this.state.currentPage - 1) * this.state.elementsPerPage
+					) {
+						this.changePage(1);
+					}
 				})
 				.catch(e => console.log(e));
 		}
@@ -257,6 +224,21 @@ class PetSection extends Component {
 
 	onClickTest = () => {
 		this.resetQuery();
+	};
+
+	changePage = async currentPage => {
+		//console.log(this.state.maxPages);
+		//console.log(currentPage);
+		if (currentPage > 0 && currentPage <= this.state.maxPages) {
+			await this.setState({
+				currentPage: currentPage,
+			});
+
+			/*this.deleteQuery("page_index");*/
+			this.addQuery("page_index", this.state.currentPage.toString());
+		}
+
+		//console.log(this.state.maxPages);
 	};
 
 	getQueryParams = () => {
@@ -297,7 +279,12 @@ class PetSection extends Component {
 						setCheckboxItem={this.setCheckboxItem}
 						setDropdownList={this.setDropdownList}
 					/>
-					<CardGrid pets={this.state.pets} />
+					<CardGrid
+						pets={this.state.pets}
+						changePage={this.changePage}
+						currentPage={this.state.currentPage}
+						maxPages={this.state.maxPages}
+					/>
 				</div>
 			</div>
 		);

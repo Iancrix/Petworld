@@ -4,7 +4,6 @@
 }
 
 .results-container {
-	border: 1px solid blue;
 }
 
 .grid {
@@ -14,11 +13,137 @@
 	justify-content: space-around;
 }
 
+.page-toggler {
+	display: flex;
+
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1em;
+}
+
+.filter-minis {
+	display: none; /*block;*/
+	width: 100%;
+}
+
+.fil {
+	display: inline-block;
+	border-radius: 7px;
+	background: #2daaff;
+	overflow: auto;
+
+	margin-left: 0.7em;
+}
+
+.fil-pr {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	/*padding: 1em 1em;*/
+
+	/*height: 100%;*/
+}
+
+.fil-txt {
+	display: inline-block;
+	color: white;
+	font-size: 0.8rem;
+	/*margin-right: 0.5em;*/
+	font-family: BreeSerif;
+	/*padding: 0.4em 0.4em;*/
+	padding: 0.4em 0.4em;
+
+	border-radius: 0px 4px 0px 4px;
+}
+
+.fil-cls {
+	/*height: 1.5em;*/
+	display: inline-block;
+	padding: 0.4em 0.4em;
+	background: #ef5866;
+	border-radius: 4px 0px 4px 0px;
+}
+
+.x-icon {
+	display: block;
+	background-image: url("/icons/Xicon.png");
+	background-size: cover;
+	background-position: top;
+	background-repeat: no-repeat;
+
+	height: 1em;
+	width: 1em;
+}
+
+.page-indexer {
+	display: flex;
+	height: 3em;
+}
+
+.backwards {
+	display: flex;
+	justify-content: center;
+	width: 5em;
+	background: #ef5866;
+	border: 0px;
+	border-radius: 7px 0px 0px 7px;
+
+	/*opacity: 0.8;*/
+}
+
+.bck-icon {
+	display: block;
+	background-image: url("/icons/nextIconLeft.png");
+	background-size: cover;
+	background-position: top;
+	background-repeat: no-repeat;
+
+	height: 3em;
+	width: 2em;
+}
+
+.current {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 5.5em;
+	background: #00a6ff;
+}
+
+.current-txt {
+	color: white;
+	font-family: BreeSerif;
+	font-size: 1.3rem;
+}
+
+.forwards {
+	display: flex;
+	justify-content: center;
+	width: 5em;
+	background: #ef5866;
+	border: 0px;
+	border-radius: 0px 7px 7px 0px;
+}
+
+.fwd-icon {
+	background-image: url("/icons/NextIconRight.png");
+	background-size: cover;
+	background-position: top;
+	background-repeat: no-repeat;
+
+	height: 3em;
+	width: 2em;
+}
+
 @media (min-width: 1045px) {
 	.results-container {
 		width: 75%;
 	}
 	.grid {
 		justify-content: flex-start;
+	}
+	.filter-minis {
+		display: block; /*block;*/
 	}
 }

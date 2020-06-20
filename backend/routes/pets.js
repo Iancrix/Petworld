@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const Pet = require("../models/Pet");
 
-// Filter Pets by breed
-router.get("/filter", (req, res) => {
+// Filter Pets by any category
+router.get("/filter", async (req, res) => {
+	//console.log(req.query);
 	const query = {};
 
 	var Raza_filters = [];
@@ -11,34 +12,81 @@ router.get("/filter", (req, res) => {
 	var Edad_filters = [];
 
 	for (let param in req.query) {
-		let strParam = param.split("_");
+		if (param.includes("_")) {
+			let strParam = param.split("_");
 
-		let category = strParam[0];
-		let index = strParam[1];
+			let category = strParam[0];
+			let index = strParam[1];
 
-		let value = req.query[param];
+			let value = req.query[param];
 
-		switch (category) {
-			case "Raza":
-				Raza_filters.push(value);
-				query["breed"] = { $in: Raza_filters };
-				break;
-			case "Genero":
-				Genero_filters.push(value);
-				query["genre"] = { $in: Genero_filters };
-				break;
-			case "Edad":
-				Edad_filters.push(value);
-				query["age"] = { $in: Edad_filters };
-				break;
+			switch (category) {
+				case "Breed":
+					Raza_filters.push(value);
+					query["breed"] = { $in: Raza_filters };
+					break;
+				case "Genre":
+					Genero_filters.push(value);
+					query["genre"] = { $in: Genero_filters };
+					break;
+				case "Age":
+					Edad_filters.push(value);
+					query["age"] = { $in: Edad_filters };
+					break;
+			}
 		}
 	}
 
+	var elementSize = parseInt(req.query["el_sz"]);
+	var indexPage = parseInt(req.query["page_index"]);
+
+	var skipElements = (indexPage - 1) * elementSize;
+
+	var count = 0;
+
+	await Pet.find(query)
+		.then(data => {
+			count = data.length;
+		})
+		.catch(error => console.log(error.message));
+
 	Pet.find(query)
-		/*.limit(2)*/
-		/*.skip(10)*/
-		.then(data => res.status(200).json(data))
+		.limit(elementSize)
+		.skip(skipElements)
+		.then(data => {
+			console.log("Max PAGES " + Math.ceil(count / elementSize));
+			res.status(200).json({
+				pets: data, //data.slice(0, elementSize),
+				count: count,
+				maxPages: Math.ceil(count / elementSize),
+			});
+		})
 		.catch(error => res.status(400).json({ msg: error.message }));
+});
+
+// Get amount per category
+router.get("/count", async (req, res) => {
+	var results = {};
+
+	await Pet.aggregate([{ $group: { _id: "$breed", count: { $sum: 1 } } }])
+		.then(data => {
+			results["breed"] = data;
+		})
+		.catch(error => res.status(400).json({ msg: error.message }));
+
+	await Pet.aggregate([{ $group: { _id: "$genre", count: { $sum: 1 } } }])
+		.then(data => {
+			results["genre"] = data;
+		})
+		.catch(error => res.status(400).json({ msg: error.message }));
+
+	await Pet.aggregate([{ $group: { _id: "$age", count: { $sum: 1 } } }])
+		.then(data => {
+			results["age"] = data;
+		})
+		.catch(error => res.status(400).json({ msg: error.message }));
+
+	res.status(200).json(results);
 });
 
 // Get All Pets
