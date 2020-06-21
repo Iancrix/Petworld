@@ -1,11 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const Pet = require("../models/Pet");
+const Rescue = require("../models/Rescue");
 
 // Filter Pets by any category
-router.get("/filter", async (req, res) => {
+router.get("/:petType/filter", async (req, res) => {
 	//console.log(req.query);
 	const query = {};
+
+	//console.log(req.params.petType);
+
+	query["type"] = req.params.petType;
 
 	var Raza_filters = [];
 	var Genero_filters = [];
@@ -37,6 +42,8 @@ router.get("/filter", async (req, res) => {
 		}
 	}
 
+	//console.log(query);
+
 	var elementSize = parseInt(req.query["el_sz"]);
 	var indexPage = parseInt(req.query["page_index"]);
 
@@ -65,22 +72,33 @@ router.get("/filter", async (req, res) => {
 });
 
 // Get amount per category
-router.get("/count", async (req, res) => {
+router.get("/:petType/count", async (req, res) => {
 	var results = {};
 
-	await Pet.aggregate([{ $group: { _id: "$breed", count: { $sum: 1 } } }])
+	console.log(req.params.petType);
+
+	await Pet.aggregate([
+		{ $match: { type: req.params.petType } },
+		{ $group: { _id: "$breed", count: { $sum: 1 } } },
+	])
 		.then(data => {
 			results["breed"] = data;
 		})
 		.catch(error => res.status(400).json({ msg: error.message }));
 
-	await Pet.aggregate([{ $group: { _id: "$genre", count: { $sum: 1 } } }])
+	await Pet.aggregate([
+		{ $match: { type: req.params.petType } },
+		{ $group: { _id: "$genre", count: { $sum: 1 } } },
+	])
 		.then(data => {
 			results["genre"] = data;
 		})
 		.catch(error => res.status(400).json({ msg: error.message }));
 
-	await Pet.aggregate([{ $group: { _id: "$age", count: { $sum: 1 } } }])
+	await Pet.aggregate([
+		{ $match: { type: req.params.petType } },
+		{ $group: { _id: "$age", count: { $sum: 1 } } },
+	])
 		.then(data => {
 			results["age"] = data;
 		})
@@ -121,6 +139,46 @@ router.post("/", async (req, res) => {
 		if (!savedPet) throw Error("Something went wrong saving the pet");
 
 		res.status(200).json(savedPet);
+	} catch (e) {
+		res.status(400).json({ message: e.message });
+	}
+});
+
+// Post many pets
+router.post("/insertpets", async (req, res) => {
+	try {
+		const pets = req.body.pets;
+
+		for (var i in pets) {
+			const pet = new Pet({
+				name: pets[i].name,
+				type: pets[i].type,
+				age: pets[i].age,
+				genre: pets[i].genre,
+				breed: pets[i].breed,
+				location: pets[i].location,
+				country: pets[i].country,
+				description: pets[i].description,
+				perks: pets[i].perks,
+				image: pets[i].image,
+				rescue: pets[i].rescue,
+			});
+
+			const savedPet = await pet.save();
+
+			const rescue = await Rescue.findById(pets[i].rescue);
+
+			if (!rescue) throw Error("No rescue was found with that id");
+
+			const petId = savedPet._id;
+			rescue.pets.push(petId);
+
+			const updatedRescue = await rescue.save();
+			if (!updatedRescue)
+				throw Error("Something went wrong while trying to update the rescue");
+		}
+
+		res.status(200).json({ msg: "Success" });
 	} catch (e) {
 		res.status(400).json({ message: e.message });
 	}

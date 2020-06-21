@@ -167,7 +167,7 @@ class PetSection extends Component {
 		this.addQuery("page_index", this.state.currentPage.toString());
 
 		axios
-			.get(`http://localhost:5000/pets/count`)
+			.get(`http://localhost:5000/pets/Dog/count`)
 			.then(res => {
 				this.setState({
 					filterCategories: this.state.filterCategories.map(filterCategory => {
@@ -202,7 +202,7 @@ class PetSection extends Component {
 			//console.log("location changed !!!");
 			axios
 				.get(
-					`http://localhost:5000/pets/filter${this.props.history.location.search}`
+					`http://localhost:5000/pets/Dog/filter${this.props.history.location.search}`
 				)
 				.then(res => {
 					this.setState({
