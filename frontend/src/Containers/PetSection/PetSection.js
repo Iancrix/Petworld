@@ -21,6 +21,23 @@ class PetSection extends Component {
 		filterCategories: [
 			{
 				category: "Breed",
+				items: [],
+				showDropdownList: false,
+			},
+			{
+				category: "Genre",
+				items: [],
+				showDropdownList: false,
+			},
+			,
+			{
+				category: "Age",
+				items: [],
+				showDropdownList: false,
+			},
+			/*
+			{
+				category: "Breed",
 				items: [
 					{ name: "Labrador Retriever", count: 0, isChecked: false },
 					{ name: "German Shepherd", count: 0, isChecked: false },
@@ -47,6 +64,7 @@ class PetSection extends Component {
 				],
 				showDropdownList: false,
 			},
+		*/
 		],
 		activeFilters: [
 			{
@@ -67,6 +85,7 @@ class PetSection extends Component {
 		elementsPerPage: 8,
 		maxPages: 1,
 		totalElements: 0,
+		animalType: this.props.match.params.animalType,
 	};
 
 	setCheckboxItem = (category, name, isChecked) => {
@@ -163,12 +182,22 @@ class PetSection extends Component {
 
 	componentDidMount() {
 		/*this.resetQuery();*/
-		this.addQuery("el_sz", this.state.elementsPerPage.toString());
+		/*this.addQuery("el_sz", this.state.elementsPerPage.toString());*/
 		this.addQuery("page_index", this.state.currentPage.toString());
+		this.updateCategories();
+	}
 
+	updateCategories = () => {
+		this.setState({
+			filterCategories: this.state.filterCategories.map(filterCategory => {
+				filterCategory.items = [];
+				return filterCategory;
+			}),
+		});
 		axios
-			.get(`http://localhost:5000/pets/Dog/count`)
+			.get(`http://localhost:5000/pets/${this.state.animalType}/count`)
 			.then(res => {
+				//console.log(res.data);
 				this.setState({
 					filterCategories: this.state.filterCategories.map(filterCategory => {
 						if (
@@ -181,20 +210,32 @@ class PetSection extends Component {
 
 							var filterGroup = filterCategory.items;
 							for (var i in categoryGroup) {
-								for (var j in filterGroup) {
-									if (categoryGroup[i]._id === filterGroup[j].name) {
-										filterGroup[j].count = categoryGroup[i].count;
-									}
-								}
+								//console.log(categoryGroup[i]);
+								filterCategory.items.push({
+									name: categoryGroup[i]._id,
+									count: categoryGroup[i].count,
+									isChecked: false,
+								});
 							}
 						}
 
 						return filterCategory;
 					}),
 				});
+				/*
+				for (var subcategory in subCategories) {
+					filterCategory["items"] = [
+						...filterCategory.items,
+						{
+							name: subCategories[subcategory]._id,
+							count: subCategories[subcategory].count,
+							isChecked: false,
+						},
+					];
+				}*/
 			})
 			.catch(e => console.log(e));
-	}
+	};
 
 	componentDidUpdate(prevProps) {
 		const locationChanged = this.props.location !== prevProps.location;
@@ -202,7 +243,7 @@ class PetSection extends Component {
 			//console.log("location changed !!!");
 			axios
 				.get(
-					`http://localhost:5000/pets/Dog/filter${this.props.history.location.search}`
+					`http://localhost:5000/pets/${this.state.animalType}/filter${this.props.history.location.search}`
 				)
 				.then(res => {
 					this.setState({
@@ -219,6 +260,20 @@ class PetSection extends Component {
 					}
 				})
 				.catch(e => console.log(e));
+		}
+		const query = new URLSearchParams(this.props.history.location.search);
+		if (!query.get("page_index")) {
+			this.addQuery("page_index", "1");
+			this.setState({
+				currentPage: 1,
+			});
+		}
+		if (this.state.animalType !== this.props.match.params.animalType) {
+			this.setState({
+				animalType: this.props.match.params.animalType,
+			});
+
+			this.updateCategories();
 		}
 	}
 

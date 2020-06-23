@@ -44,36 +44,41 @@ class Sidemenu extends Component {
 				return (
 					<React.Fragment>
 						<Navcategory
-							path="/dogs"
+							path="/pets/Dog"
 							name="dogs"
+							cat="Dog"
 							image="/categories/pets/dogs.jpg"
 							addOnStyle="red-h"
 						/>
 
 						<Navcategory
-							path="/cats"
+							path="/pets/Cat"
 							name="cats"
+							cat="Cat"
 							image="/categories/pets/cats.jpg"
 							addOnStyle="red-h"
 						/>
 
 						<Navcategory
-							path="/birds"
+							path="/pets/Bird"
 							name="birds"
+							cat="Bird"
 							image="/categories/pets/birds.jpg"
 							addOnStyle="red-h"
 						/>
 
 						<Navcategory
-							path="/rodents"
+							path="/pets/Rodent"
 							name="rodents"
+							cat="Rodent"
 							image="/categories/pets/rodents.jpg"
 							addOnStyle="red-h"
 						/>
 
 						<Navcategory
-							path="/rabbits"
+							path="/pets/Rabbit"
 							name="rabbits"
+							cat="Rabbit"
 							image="/categories/pets/rabbits.jpg"
 							addOnStyle="red-h"
 						/>
@@ -83,21 +88,21 @@ class Sidemenu extends Component {
 				return (
 					<React.Fragment>
 						<Navcategory
-							path="/nutrition"
+							path="/products/nutrition"
 							name="nutrition"
 							image="/categories/products/nutrition.jpeg"
 							addOnStyle="blue-h"
 						/>
 
 						<Navcategory
-							path="/costumes"
+							path="/products/costumes"
 							name="costumes"
 							image="/categories/products/costumes.jpg"
 							addOnStyle="blue-h"
 						/>
 
 						<Navcategory
-							path="/toys"
+							path="/products/toys"
 							name="toys"
 							image="/categories/products/toys.jpg"
 							addOnStyle="blue-h"

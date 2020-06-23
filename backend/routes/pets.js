@@ -44,7 +44,7 @@ router.get("/:petType/filter", async (req, res) => {
 
 	//console.log(query);
 
-	var elementSize = parseInt(req.query["el_sz"]);
+	var elementSize = /*parseInt(req.query["el_sz"]);*/ 8;
 	var indexPage = parseInt(req.query["page_index"]);
 
 	var skipElements = (indexPage - 1) * elementSize;

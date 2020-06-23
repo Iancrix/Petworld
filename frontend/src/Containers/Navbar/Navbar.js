@@ -89,7 +89,7 @@ class Navbar extends Component {
 							>
 								<div className="left-nav">
 									<Navitem
-										path="pets"
+										path="pets/Dog/"
 										name="pets"
 										content="PETS"
 										color="red"

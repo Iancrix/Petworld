@@ -23,7 +23,7 @@ class App extends Component {
 				/>
 				<Route
 					exact
-					path="/pets"
+					path="/pets/:animalType"
 					render={props => (
 						<React.Fragment>
 							<Navbar />

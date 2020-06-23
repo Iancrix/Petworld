@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import "../../Containers/Navbar/Navbar.css";
+import { withRouter } from "react-router-dom";
 
 class Navcategory extends Component {
 	getImage = () => {
@@ -13,7 +14,11 @@ class Navcategory extends Component {
 	render() {
 		return (
 			<div className="category mr-sm">
-				<Link to={"/"} className="cat-link">
+				<Link
+					to={`${this.props.path}/`}
+					className="cat-link"
+					onClick={this.onClick}
+				>
 					<li className={"nav-category " + this.props.addOnStyle}>
 						<div className="nav-category-img" style={this.getImage()}></div>
 						<span className="nav-category-name">{this.props.name}</span>
@@ -24,4 +29,4 @@ class Navcategory extends Component {
 	}
 }
 
-export default Navcategory;
+export default withRouter(Navcategory);
