@@ -193,9 +193,15 @@ class PetSection extends Component {
 				filterCategory.items = [];
 				return filterCategory;
 			}),
+			activeFilters: this.state.activeFilters.map(activeFilter => {
+				activeFilter.filters = [];
+				return activeFilter;
+			}),
 		});
 		axios
-			.get(`http://localhost:5000/pets/${this.state.animalType}/count`)
+			.get(
+				`http://localhost:5000/pets/${this.props.match.params.animalType}/count`
+			)
 			.then(res => {
 				//console.log(res.data);
 				this.setState({
@@ -238,12 +244,30 @@ class PetSection extends Component {
 	};
 
 	componentDidUpdate(prevProps) {
+		if (this.state.animalType !== this.props.match.params.animalType) {
+			this.setState({
+				animalType: this.props.match.params.animalType,
+			});
+
+			console.log(this.props.match.params.animalType);
+
+			this.updateCategories();
+		}
+
+		const query = new URLSearchParams(this.props.history.location.search);
+		if (!query.get("page_index")) {
+			this.addQuery("page_index", "1");
+			this.setState({
+				currentPage: 1,
+			});
+		}
+
 		const locationChanged = this.props.location !== prevProps.location;
 		if (locationChanged) {
-			//console.log("location changed !!!");
+			console.log("location changed !!!");
 			axios
 				.get(
-					`http://localhost:5000/pets/${this.state.animalType}/filter${this.props.history.location.search}`
+					`http://localhost:5000/pets/${this.props.match.params.animalType}/filter${this.props.history.location.search}`
 				)
 				.then(res => {
 					this.setState({
@@ -260,20 +284,6 @@ class PetSection extends Component {
 					}
 				})
 				.catch(e => console.log(e));
-		}
-		const query = new URLSearchParams(this.props.history.location.search);
-		if (!query.get("page_index")) {
-			this.addQuery("page_index", "1");
-			this.setState({
-				currentPage: 1,
-			});
-		}
-		if (this.state.animalType !== this.props.match.params.animalType) {
-			this.setState({
-				animalType: this.props.match.params.animalType,
-			});
-
-			this.updateCategories();
 		}
 	}
 

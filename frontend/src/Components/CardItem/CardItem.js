@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./CardItem.css";
 
+import { Link } from "react-router-dom";
+
 class CardItem extends Component {
 	getImage = () => {
 		return {
@@ -33,9 +35,9 @@ class CardItem extends Component {
 								{this.props.pet.location}, {this.props.pet.country}
 							</span>
 							<p className="card-p">{this.props.pet.description} </p>
-							<a className="inherit" href="/">
+							<Link to={`/pets/pet/${this.props.pet._id}`} className="inherit">
 								<div className="card-btn">View page</div>
-							</a>
+							</Link>
 						</div>
 					</div>
 				</div>

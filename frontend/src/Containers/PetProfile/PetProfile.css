@@ -1,0 +1,276 @@
+@font-face {
+	font-family: BreeSerif;
+	src: url(/fonts/BreeSerif-Regular.ttf);
+}
+
+.profile {
+	margin: 0;
+	padding: 1.5em 2em;
+	background: #00a6ff;
+	opacity: 1;
+	color: white;
+}
+
+.container-profile {
+	display: block;
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+
+	font-family: BreeSerif;
+
+	border-radius: 10px;
+}
+
+.flex {
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 1em;
+
+	border-bottom: 3px solid white;
+}
+
+.photo-profile {
+	/*width: 100%;*/
+	/*height: 20em;*/
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.info-profile {
+	display: flex;
+	flex-direction: column;
+	/*justify-content: space-between;*/
+	/*width: 100%;*/
+	/*height: 20em;*/
+}
+
+.profile-img {
+	height: 18em;
+	width: 19em;
+
+	background-image: url("/petimages/pet.jpg");
+	background-size: cover;
+	background-position: 50%;
+	background-repeat: no-repeat;
+}
+
+.name-profile {
+	height: 1.5em;
+
+	border-bottom: 7px solid #ef5866;
+	font-size: 2.2rem;
+	text-align: center;
+}
+
+.description-profile {
+	margin-top: 1em;
+
+	/*padding: 0em 1em;*/
+	font-size: 1rem;
+	text-align: justify;
+}
+
+.perks-profile {
+	margin-top: 1.2em;
+	padding: 0em 2em;
+	font-size: 1rem;
+
+	/*display: flex;
+	flex-direction: column;*/
+}
+
+.perk {
+	display: block;
+	height: 2.5em;
+	/*border-radius: 7px;*/
+	background: #ef5866;
+	overflow: auto;
+	border-bottom: 3px solid white;
+
+	/*margin-left: 0.7em;*/
+}
+
+.perk-pr {
+	display: flex;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+
+	/*padding: 1em 1em;*/
+
+	/*height: 100%;*/
+}
+
+.perk-txt {
+	display: inline-block;
+	color: white;
+	font-size: 1rem;
+	/*margin-right: 0.5em;*/
+	font-family: BreeSerif;
+	/*padding: 0.4em 0.4em;*/
+	/*padding: 0.4em 0.4em;*/
+	/*padding: 0.7em 0.4em;*/
+	/*border-radius: 0px 4px 0px 4px;*/
+
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+}
+
+.perks-profile:last-child {
+	border-bottom: 0px solid white;
+}
+
+.char-profile {
+	margin-top: 1em;
+}
+
+.char-title {
+	height: 1.5em;
+	text-align: center;
+	border-bottom: 0px solid #f5f5dd;
+	font-size: 1.3rem;
+}
+
+.char-container {
+	display: flex;
+	flex-direction: column;
+	margin-top: 0.5em;
+	/*height: 8em;*/
+	background: #ef5866;
+}
+
+.char-left {
+	/*height: 8em;*/
+	width: 100%;
+	border: none;
+	border-bottom: 5px solid #00a6ff;
+}
+
+.char-right {
+	/*height: 8em;*/
+	width: 100%;
+	border: none;
+	border-top: 5px solid #00a6ff;
+}
+
+.btn-profile {
+	margin-top: 1.5em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn-adoption:hover {
+	background-color: #ef969e;
+}
+
+.btn-adoption {
+	display: inline-block;
+	padding: 0.8em 1em;
+	background: #ef5866;
+
+	font-size: 1.2rem;
+}
+
+.chars-title {
+	border-bottom: 3px solid white;
+
+	color: #ef5866;
+	font-weight: 700;
+	background: white;
+	padding-top: 0.4em;
+	padding-bottom: 0.4em;
+	text-align: center;
+}
+
+.char-item {
+	height: 1.7em;
+	padding-left: 2em;
+	padding-top: 0.2em;
+	font-size: 0.9rem;
+}
+
+.char-value {
+	font-size: 0.9rem;
+	padding: 0em 0.4em;
+	border-radius: 1em;
+	display: inline-block;
+	background: #00a6ff;
+}
+
+@media (min-width: 1200px) {
+	.profile {
+		background: #fcf4fc;
+		padding: 2em 0em;
+	}
+	.container-profile {
+		padding: 2em 1.5em;
+		background: #00a6ff;
+	}
+	.flex {
+		flex-direction: row;
+	}
+	.photo-profile {
+		width: 30%;
+	}
+	.info-profile {
+		width: 70%;
+	}
+	.name-profile {
+		text-align: start;
+		padding-left: 0.4em;
+		border-bottom: 7px solid #f5f5dd;
+	}
+	.profile-img {
+		height: 15em;
+		width: 16em;
+	}
+
+	.description-profile {
+		padding: 0em 1em;
+	}
+	.perks-profile {
+		padding: 0em 1em;
+		border: 0px;
+	}
+	.perk {
+		display: inline-block;
+		border-radius: 7px;
+		border: 0px;
+		margin-left: 0.7em;
+	}
+	.perk-txt {
+		padding: 0.4em 0.4em;
+		border-radius: 0px 4px 0px 4px;
+	}
+
+	.char-container {
+		flex-direction: row;
+
+		width: 80%;
+		margin: 0 auto;
+		margin-top: 1em;
+	}
+	.char-left {
+		width: 50%;
+		border: none;
+		border-right: 5px solid #00a6ff;
+	}
+
+	.char-right {
+		width: 50%;
+		border: none;
+		border-left: 5px solid #00a6ff;
+	}
+
+	.chars-title {
+		text-align: start;
+		padding-left: 1em;
+	}
+}
