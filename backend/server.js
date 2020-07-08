@@ -24,6 +24,9 @@ app.use("/pets/", petsRoute);
 const rescuesRoute = require("./routes/rescues");
 app.use("/rescues/", rescuesRoute);
 
+const productsRoute = require("./routes/products");
+app.use("/products/", productsRoute);
+
 // DB Connection
 mongoose
 	.connect(process.env.MONGODB_URI, {

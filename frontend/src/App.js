@@ -6,6 +6,7 @@ import { Route } from "react-router-dom";
 import Navbar from "./Containers/Navbar/Navbar";
 import AnimatedScenery from "./Containers/AnimatedScenery/AnimatedScenery";
 import PetSection from "./Containers/PetSection/PetSection";
+import ProductSection from "./Containers/ProductSection/ProductSection";
 import PetProfile from "./Containers/PetProfile/PetProfile";
 import Footer from "./Components/Footer/Footer";
 
@@ -42,6 +43,18 @@ class App extends Component {
 						<React.Fragment>
 							<Navbar />
 							<PetSection />
+							<Footer />
+						</React.Fragment>
+					)}
+				/>
+				<Route
+					exact
+					path="/products/:productType"
+					render={props => (
+						<React.Fragment>
+							<Navbar />
+							<ProductSection />
+							<Footer />
 						</React.Fragment>
 					)}
 				/>

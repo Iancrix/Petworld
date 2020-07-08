@@ -6,10 +6,16 @@
 	background: #fcf4fc;
 	border-top: 7px solid #ef5866;
 	padding-top: 1.5em;
-	min-height: 750px;
 }
 
 .search-container {
+	display: block;
+	max-width: 1700px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+.box-container {
 	display: block;
 	max-width: 1700px;
 	padding: 0 15px;

@@ -58,51 +58,27 @@ class Sidemenu extends Component {
 							image="/categories/pets/cats.jpg"
 							addOnStyle="red-h"
 						/>
-
-						<Navcategory
-							path="/pets/Bird"
-							name="birds"
-							cat="Bird"
-							image="/categories/pets/birds.jpg"
-							addOnStyle="red-h"
-						/>
-
-						<Navcategory
-							path="/pets/Rodent"
-							name="rodents"
-							cat="Rodent"
-							image="/categories/pets/rodents.jpg"
-							addOnStyle="red-h"
-						/>
-
-						<Navcategory
-							path="/pets/Rabbit"
-							name="rabbits"
-							cat="Rabbit"
-							image="/categories/pets/rabbits.jpg"
-							addOnStyle="red-h"
-						/>
 					</React.Fragment>
 				);
 			case "products":
 				return (
 					<React.Fragment>
 						<Navcategory
-							path="/products/nutrition"
+							path="/products/Nutrition"
 							name="nutrition"
 							image="/categories/products/nutrition.jpeg"
 							addOnStyle="blue-h"
 						/>
 
 						<Navcategory
-							path="/products/costumes"
+							path="/products/Costumes"
 							name="costumes"
 							image="/categories/products/costumes.jpg"
 							addOnStyle="blue-h"
 						/>
 
 						<Navcategory
-							path="/products/toys"
+							path="/products/Toys"
 							name="toys"
 							image="/categories/products/toys.jpg"
 							addOnStyle="blue-h"
