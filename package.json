@@ -4,7 +4,7 @@
 	"description": "PetWorld Project - MERN Stack Application",
 	"main": "server.js",
 	"scripts": {
-		"start": "node server",
+		"start": "cd frontend && npm install && npm run build && cd .. && node server",
 		"dev": "nodemon server"
 	},
 	"author": "Ian Chona",
