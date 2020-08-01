@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Navbar.css";
 
 import Navitem from "../../Components/Navitem/Navitem";
-
+import { Link } from "react-router-dom";
 class Navbar extends Component {
 	state = {
 		width: 0,
@@ -126,11 +126,11 @@ class Navbar extends Component {
 									/>
 								</div>
 								<div className="right-nav">
-									<a className="sign-link" href="/">
+									<Link className="sign-link" to="">
 										<li className="nav-item beige beige-h sign-item">
 											SIGN IN
 										</li>
-									</a>
+									</Link>
 								</div>
 							</ul>
 						</div>
