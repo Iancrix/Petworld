@@ -9,6 +9,7 @@ import PetSection from "./Containers/PetSection/PetSection";
 import ProductSection from "./Containers/ProductSection/ProductSection";
 import PetProfile from "./Containers/PetProfile/PetProfile";
 import Footer from "./Components/Footer/Footer";
+import About from "./Components/About/About";
 
 class App extends Component {
 	render() {
@@ -54,6 +55,18 @@ class App extends Component {
 						<React.Fragment>
 							<Navbar />
 							<ProductSection />
+							<Footer />
+						</React.Fragment>
+					)}
+				/>
+
+				<Route
+					exact
+					path="/about"
+					render={props => (
+						<React.Fragment>
+							<Navbar />
+							<About />
 							<Footer />
 						</React.Fragment>
 					)}

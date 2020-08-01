@@ -89,6 +89,15 @@ class Navbar extends Component {
 							>
 								<div className="left-nav">
 									<Navitem
+										path=""
+										name="home"
+										content="HOME"
+										color="yellow"
+										hasSidemenu={true}
+										setStyleSidemenu={this.changeStyleSM}
+										isMobileResponsive={this.state.isMobileResponsive}
+									/>
+									<Navitem
 										path="pets/Dog/"
 										name="pets"
 										content="PETS"
@@ -98,7 +107,7 @@ class Navbar extends Component {
 										isMobileResponsive={this.state.isMobileResponsive}
 									/>
 									<Navitem
-										path="products"
+										path="products/Nutrition"
 										name="products"
 										content="PRODUCTS"
 										color="blue"

@@ -1,0 +1,16 @@
+@font-face {
+	font-family: BreeSerif;
+	src: url(/fonts/BreeSerif-Regular.ttf);
+}
+
+.about {
+	height: 800px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.autor {
+	font-family: BreeSerif;
+	font-size: 70px;
+}
