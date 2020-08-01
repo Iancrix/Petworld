@@ -5,7 +5,7 @@ const path = require("path");
 
 require("dotenv/config");
 
-console.log(path.resolve(__dirname, "frontend", "build", "index.html"));
+//console.log(path.resolve(__dirname, "frontend", "build", "index.html"));
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -39,7 +39,7 @@ if (process.env.NODE_ENV === "production") {
 	});
 }
 
-console.log("Testing building");
+//console.log("Testing building");
 // DB Connection
 mongoose
 	.connect(process.env.MONGODB_URI, {
