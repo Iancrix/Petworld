@@ -1,4 +1,3 @@
-process.chdir(__dirname);
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -36,8 +35,16 @@ if (process.env.NODE_ENV === "production") {
 	app.use(express.static("./frontend/build"));
 
 	app.get("*", (req, res) => {
+		res.sendFile(
+			path.resolve("home", "site", "wwwroot", "frontend", "build", "index.html")
+		);
+	});
+
+	/* /home/site/wwwroot/
+	app.get("*", (req, res) => {
 		res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
 	});
+	*/
 }
 
 //console.log("Testing building");
