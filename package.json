@@ -4,8 +4,9 @@
 	"description": "PetWorld Project - MERN Stack Application",
 	"main": "server.js",
 	"scripts": {
-		"start": "cd frontend && npm install && npm run build && cd .. && npm install && node server",
-		"dev": "nodemon server"
+		"start": "node server.js",
+		"dev": "nodemon server",
+		"azure": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend && npm run start"
 	},
 	"author": "Ian Chona",
 	"license": "ISC",
