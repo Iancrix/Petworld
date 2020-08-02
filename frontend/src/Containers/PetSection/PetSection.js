@@ -200,7 +200,7 @@ class PetSection extends Component {
 		});
 		axios
 			.get(
-				`http://localhost:5000/pets/${this.props.match.params.animalType}/count`
+				`https://petworld.azurewebsites.net/pets/${this.props.match.params.animalType}/count`
 			)
 			.then(res => {
 				//console.log(res.data);
