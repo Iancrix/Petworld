@@ -38,7 +38,6 @@ if (process.env.NODE_ENV === "production") {
 	});
 }
 
-//console.log("Testing building");
 // DB Connection
 mongoose
 	.connect(process.env.MONGODB_URI, {
@@ -47,7 +46,7 @@ mongoose
 		useUnifiedTopology: true,
 	})
 	.then(() => console.log("Connected to MongoDB"))
-	.catch(err => console.log(err));
+	.catch(err => console.log("Connection REFUSED"));
 
 // Server Init
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
