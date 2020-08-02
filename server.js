@@ -30,6 +30,7 @@ const productsRoute = require("./routes/products");
 app.use("/products/", productsRoute);
 
 // Serve static assets if in production
+
 if (process.env.NODE_ENV === "production") {
 	// Set static folder
 	app.use(express.static("./frontend/build"));
