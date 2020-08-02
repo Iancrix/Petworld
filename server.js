@@ -33,15 +33,7 @@ app.use("/products/", productsRoute);
 if (process.env.NODE_ENV === "production") {
 	// Set static folder
 	app.use(express.static("./frontend/build"));
-	/*app.use(express.static("D:/home/site/wwwroot/frontend/build"));
 	app.get("*", (req, res) => {
-		res.sendFile(
-			path.resolve("D:/home/site/wwwroot/frontend/build/index.html")
-		);
-	});*/
-
-	app.get("*", (req, res) => {
-		/*res.json({ hey: "wtf" });*/
 		res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
 	});
 }
