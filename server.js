@@ -41,8 +41,8 @@ app.use("/products/", productsRoute);
 	});*/
 
 app.get("*", (req, res) => {
-	res.json({ hey: "wtf" });
-	//res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+	/*res.json({ hey: "wtf" });*/
+	res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
 });
 //}
 
