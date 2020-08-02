@@ -18,7 +18,9 @@ class PetProfile extends Component {
 	componentDidMount() {
 		console.log("hola");
 		axios
-			.get(`http://localhost:5000/pets/${this.props.match.params.idAnimal}`)
+			.get(
+				`http://localhost:5000/petsRoute/${this.props.match.params.idAnimal}`
+			)
 			.then(res => {
 				this.setState({
 					pet: res.data,

@@ -21,13 +21,13 @@ app.use(express.json());
 // Import Routes
 
 const petsRoute = require("./routes/pets");
-app.use("/pets/", petsRoute);
+app.use("/petsRoute/", petsRoute);
 
 const rescuesRoute = require("./routes/rescues");
-app.use("/rescues/", rescuesRoute);
+app.use("/rescuesRoute/", rescuesRoute);
 
 const productsRoute = require("./routes/products");
-app.use("/products/", productsRoute);
+app.use("/productsRoute/", productsRoute);
 
 // Serve static assets if in production
 
