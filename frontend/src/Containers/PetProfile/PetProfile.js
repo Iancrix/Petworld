@@ -19,7 +19,7 @@ class PetProfile extends Component {
 		console.log("hola");
 		axios
 			.get(
-				`http://localhost:5000/petsRoute/${this.props.match.params.idAnimal}`
+				`https://petworld.azurewebsites.net/petsRoute/${this.props.match.params.idAnimal}`
 			)
 			.then(res => {
 				this.setState({

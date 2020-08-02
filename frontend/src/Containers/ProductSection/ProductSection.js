@@ -93,7 +93,7 @@ class ProductSection extends Component {
 		});
 		axios
 			.get(
-				`http://localhost:5000/productsRoute/${this.props.match.params.productType}/count`
+				`https://petworld.azurewebsites.net/productsRoute/${this.props.match.params.productType}/count`
 			)
 			.then(res => {
 				this.setState({
@@ -142,7 +142,7 @@ class ProductSection extends Component {
 		if (locationChanged) {
 			axios
 				.get(
-					`http://localhost:5000/productsRoute/${this.props.match.params.productType}/filter${this.props.history.location.search}`
+					`https://petworld.azurewebsites.net/productsRoute/${this.props.match.params.productType}/filter${this.props.history.location.search}`
 				)
 				.then(res => {
 					this.setState({
