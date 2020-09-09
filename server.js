@@ -8,6 +8,7 @@ require("dotenv/config");
 //console.log(path.resolve(__dirname, "frontend", "build", "index.html"));
 const app = express();
 const PORT = process.env.PORT || 5000;
+const HOST = "0.0.0.0";
 
 // Middleware
 app.use(cors());
@@ -41,13 +42,16 @@ if (process.env.NODE_ENV === "production") {
 
 // DB Connection
 mongoose
-	.connect(process.env.MONGODB_URI, {
-		useNewUrlParser: true,
-		useCreateIndex: true,
-		useUnifiedTopology: true,
-	})
+	.connect(
+		"mongodb+srv://Iancrix:12345@cluster0-yfli3.gcp.mongodb.net/petworld?retryWrites=true&w=majority",
+		{
+			useNewUrlParser: true,
+			useCreateIndex: true,
+			useUnifiedTopology: true,
+		}
+	)
 	.then(() => console.log("Connected to MongoDB"))
 	.catch(err => console.log("Connection REFUSED"));
 
 // Server Init
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(PORT, HOST, () => console.log(`Server started on port ${PORT}`));
