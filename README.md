@@ -1,3 +1,3 @@
 ### PETWORLD PROJECT
 
-Deployed at: https://petworld.azurewebsites.net/
+ X Deployed at: https://petworld.azurewebsites.net/ (NOT FOR NOW)
